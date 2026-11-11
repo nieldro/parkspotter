@@ -1,0 +1,35 @@
+﻿# Despliegue en Render (plan gratuito): un solo servicio con la API y la app, con link fijo https://<nombre>.onrender.com
+# y sin depender de ningún computador. Datos, cuentas y fotos viven en Supabase; el correo sale por SMTP (Gmail).
+# Pasos completos en DESPLIEGUE.md. Las variables «sync: false» las pegas tú en el panel de Render (son secretos).
+services:
+  - type: web
+    name: parkspotter
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/salud
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      # Base de datos y cuentas (Supabase)
+      - key: DATABASE_URL          # «Session pooler» de Supabase (IPv4)
+        sync: false
+      - key: SUPABASE_URL          # https://xxxx.supabase.co
+        sync: false
+      - key: SUPABASE_ANON_KEY     # clave pública (anon)
+        sync: false
+      - key: SUPABASE_SERVICE_KEY  # clave service_role: SECRETA
+        sync: false
+      # Correo (código de verificación y «olvidé mi contraseña»)
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "465"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS             # contraseña de aplicación de Gmail
+        sync: false
+      # Botones «Conductor / Propietario» de demostración en el ingreso (quita esta variable para ocultarlos)
+      - key: DEMO
+        value: "1"

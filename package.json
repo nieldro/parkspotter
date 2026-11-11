@@ -1,0 +1,21 @@
+{
+  "name": "parkspotter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ParkSpotter: alquiler de garajes en desuso como parqueaderos en Bogotá (PWA instalable)",
+  "workspaces": ["client", "server"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client",
+    "build": "npm run build -w client",
+    "start": "npm start -w server",
+    "db:init": "npm run db:init -w server",
+    "db:seed": "npm run db:seed -w server",
+    "db:demo": "npm run db:demo -w server",
+    "supabase:probar": "npm run supabase:probar -w server",
+    "demo:publico": "node scripts/demo-publica.mjs",
+    "test": "npm test -w server",
+    "icons": "npm run icons -w client"
+  }
+}
