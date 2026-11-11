@@ -27,14 +27,14 @@ npm run db:seed             # (opcional) datos de demostración; sus fotos tambi
 ```
 
 ## 3. Subir el código a GitHub
+El repositorio local ya está creado y con su primer commit. Crea en GitHub un repositorio **privado y vacío** llamado
+`parkspotter` (sin README) y, desde esta carpeta:
+
 ```
-git init
-git add .
-git commit -m "ParkSpotter"
-git branch -M main
 git remote add origin https://github.com/TU-USUARIO/parkspotter.git
 git push -u origin main
 ```
+(Si cambias algo después: `git add -A`, `git commit -m "lo que cambiaste"` y `git push`; Render se actualiza solo.)
 `.env` y `server/data` están en `.gitignore`: tus claves **no se suben**. Usa un repositorio **privado**.
 
 ## 4. Render
